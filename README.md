@@ -1,10 +1,30 @@
-# ⚔️ Dofus Rétro Speedrun — V2 React
+# ⚔️ Dofus Rétro Speedrun — Version Test
 
-Application PWA installable depuis Chrome, sans APK.
+**Un chronomètre de speedrun pour les donjons de Dofus Rétro**, directement accessible depuis un navigateur sur téléphone, tablette ou ordinateur.
 
-**Stack :** React, TypeScript, Vite, Framer Motion, Lucide, vite-plugin-pwa.
+## 🌐 Jouer / ouvrir le site
 
-## Installation locale
+### 👉 [**OUVRIR DOFUS RÉTRO SPEEDRUN**](https://adrienutile.github.io/Test/)
+
+**Adresse :** https://adrienutile.github.io/Test/
+
+Aucune installation nécessaire : il suffit d'ouvrir le lien.
+
+## ✨ Fonctionnalités
+
+- ⏱️ Chronomètre avec démarrage, pause, reprise et arrêt.
+- 🏆 Records personnels par donjon.
+- 📜 Historique des runs, modification et ajout manuel des temps.
+- 📊 Statistiques et suivi de progression.
+- ⭐ Donjons favoris.
+- 💾 Sauvegarde locale automatique et import/export JSON.
+- 🎨 Interface inspirée de Dofus Rétro, adaptée aux écrans mobiles et ordinateurs.
+
+## 🛠️ Technologie
+
+React · TypeScript · Vite · Framer Motion · Lucide React
+
+## 💻 Lancer le projet en local
 
 ```bash
 npm install
@@ -13,16 +33,12 @@ cp -R assets/. public/assets/
 npm run dev
 ```
 
-## Publication GitHub Pages
+## 🚀 Publication
 
-Le workflow `.github/workflows/deploy.yml` construit l'application et publie `dist`.
+Le site est publié automatiquement avec **GitHub Actions** et **GitHub Pages** après les modifications de la branche `main`.
 
-**Action nécessaire une seule fois :** Settings → Pages → Build and deployment → Source : **GitHub Actions**.
+## 💾 Données
 
-Lien attendu : https://adrienutile.github.io/Test/
+Les runs sont enregistrés dans le stockage local du navigateur. Pense à utiliser **Exporter les données** pour conserver une sauvegarde ou changer d'appareil.
 
-## Données
-
-Le format des sauvegardes reste compatible avec l'application originale. Le navigateur stocke les runs dans `dofus-runs-prod-v2`. Pour déplacer les données entre la production et le dépôt Test, utiliser Exporter puis Importer.
-
-La production `Speedrun-timer-Dofus-retro` reste inchangée.
+Ce dépôt est la **version de test**. Il est distinct du dépôt de production `Speedrun-timer-Dofus-retro`.
