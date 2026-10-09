@@ -1,1 +1,1 @@
-body { background-color: #29452b; color: #46270f; }
+body{margin:0;background:#29452b url('./assets/landscape.jpg') center/cover fixed;color:#46270f;font-family:Georgia,serif}*{box-sizing:border-box}.app{max-width:560px;margin:auto;padding:0 12px 100px}.hero{height:190px;display:flex;justify-content:center}.hero img{max-width:90%;object-fit:contain}.paper{background:#f4d79e url('./assets/parchment.jpg') center/cover;border:6px ridge #99602b;border-radius:17px;padding:15px;margin:14px 0}
