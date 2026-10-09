@@ -121,3 +121,11 @@ body{font-family:'Montserrat',Arial,sans-serif;color:#f6e5c3;background-color:#0
  .monster{width:60px;height:60px}
  .control-labels{font-size:9px}
 }
+
+/* Illustrations utilisateur : copiées automatiquement de assets/ vers public/assets/ */
+body{background-image:linear-gradient(115deg,#071018dd,#071a17ad 45%,#0b141de0),url('/Test/assets/09_fonds_foret_nuit.png');background-position:center;background-size:cover}
+.paper{background-image:linear-gradient(135deg,#f4dfaacc,#f8e8c0db),url('/Test/assets/06_panneaux_grand_parchemin.png');background-size:cover}
+.wood-heading,.page-title{background-image:linear-gradient(180deg,#59351dd9,#1b1718f2),url('/Test/assets/10_textures_bois.png');background-size:cover}
+.bottom-nav{background-image:linear-gradient(180deg,#293038e8,#111c23f7),url('/Test/assets/10_textures_bois.png')}
+.controls img{object-fit:contain;aspect-ratio:1/1;box-shadow:none;border-radius:0;filter:drop-shadow(0 5px 6px #21120888)}
+.hero img{object-fit:contain}
