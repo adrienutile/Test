@@ -1,0 +1,4 @@
+Toutes les images sont directement à la racine de ce ZIP.
+Sur GitHub : Test > public > assets > Add file > Upload files.
+Selectionne toutes les images de ce ZIP decompresse. Ne depose pas le ZIP lui-meme.
+Les noms contiennent un prefixe de categorie pour eviter les doublons.
