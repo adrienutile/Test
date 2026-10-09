@@ -22,8 +22,6 @@ jobs:
         run: |
           mkdir -p public/assets
           cp -R assets/. public/assets/
-          curl -fLsS https://raw.githubusercontent.com/adrienutile/Speedrun-timer-Dofus-retro/main/icon-192.png -o public/icon-192.png
-          curl -fLsS https://raw.githubusercontent.com/adrienutile/Speedrun-timer-Dofus-retro/main/icon-512.png -o public/icon-512.png
       - run: npm install
       - run: npm run build
       - uses: actions/configure-pages@v5
