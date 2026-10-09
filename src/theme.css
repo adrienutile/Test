@@ -234,3 +234,16 @@ main>.paper:last-child:not(.selector):not(.timer):not(.history){max-width:790px}
  .bottom-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);margin:0;width:min(100%,560px)}
  .app{padding-bottom:100px}
 }
+
+/* V3.6 : action principale rouge pendant un run */
+.controls .action-start.is-running,
+.controls .action-start.is-running:not(:disabled){
+ background:radial-gradient(circle at 38% 22%,#ff8a7c,#db3030 55%,#83121e 100%)!important;
+ border-color:#f3b87b;
+ color:#fff8e9;
+ box-shadow:inset 0 3px 8px #ffd6c588,inset 0 -8px 14px #680b168c,0 5px 0 #672025,0 0 24px #e8333855;
+}
+.controls .action-start.is-running:hover{filter:brightness(1.1)}
+.controls .action-start.is-running svg{width:38%;height:38%}
+.controls .action-start:focus-visible{outline:4px solid #fff5ad;outline-offset:5px}
+.timer .eyebrow{letter-spacing:.09em}
