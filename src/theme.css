@@ -394,3 +394,32 @@ main>.paper:last-child:not(.selector):not(.timer):not(.history){max-width:790px}
   height:clamp(170px,43vw,220px);
  }
 }
+
+/* V4.2 — illustration du haut : même largeur que les parchemins */
+.app .hero{
+ box-sizing:border-box;
+ width:100%;
+ max-width:790px;
+ min-height:170px;
+ height:auto;
+ margin:0 auto 12px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+}
+.app .hero img{
+ display:block;
+ width:100%;
+ max-width:100%;
+ height:auto;
+ max-height:240px;
+ object-fit:contain;
+ object-position:center;
+ margin:0 auto;
+}
+.app .hero .gear{position:absolute;right:8px;top:8px;z-index:2}
+@media(max-width:649px){
+ .app .hero{min-height:110px;margin-bottom:8px}
+ .app .hero img{width:100%;max-height:180px}
+}
