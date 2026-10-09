@@ -270,3 +270,73 @@ main>.paper:last-child:not(.selector):not(.timer):not(.history){max-width:790px}
 .timer .finished p{margin:9px 0 15px;font-size:clamp(15px,2vw,21px);font-weight:800}
 .timer .finished .wood-btn{width:100%;max-width:480px;min-height:54px;justify-content:center}
 @media(max-width:649px){.timer .finished{padding:17px 12px;margin-top:16px}.timer .finished .wood-btn{max-width:none}}
+
+/* V3.8 — commandes sobres, rectangulaires et arrondies */
+.timer .controls{
+ display:grid;
+ grid-template-columns:1fr 1.2fr 1fr;
+ gap:clamp(8px,2vw,16px);
+ width:100%;
+ max-width:570px;
+ align-items:stretch;
+ margin:16px auto 3px;
+}
+.timer .controls .action-circle,
+.timer .controls .action-start{
+ box-sizing:border-box;
+ width:100%;
+ height:clamp(58px,8vw,76px);
+ min-width:0;
+ aspect-ratio:auto;
+ border-radius:15px;
+ border:1px solid #ffffff42;
+ font-size:clamp(25px,4vw,35px);
+ color:#fff9ed;
+ text-shadow:0 1px 2px #0005;
+ box-shadow:inset 0 1px 0 #ffffff38,0 3px 8px #2d1b1250;
+ transition:transform .15s ease,filter .15s ease,box-shadow .15s ease;
+}
+.timer .controls .action-reset{
+ background:linear-gradient(180deg,#ad7548,#83502f);
+}
+.timer .controls .action-start{
+ background:linear-gradient(180deg,#39b75e,#208844);
+ border-color:#65c77a;
+ box-shadow:inset 0 1px 0 #ffffff4a,0 3px 9px #245b3045;
+}
+.timer .controls .action-finish{
+ background:linear-gradient(180deg,#aa7950,#775136);
+}
+.timer .controls .action-start.is-running,
+.timer .controls .action-start.is-running:not(:disabled){
+ background:linear-gradient(180deg,#e6504c,#b92d31)!important;
+ border-color:#f17b73;
+ box-shadow:inset 0 1px 0 #ffffff4a,0 3px 9px #69232645;
+}
+.timer .controls .action-circle:not(:disabled):hover{
+ transform:translateY(-2px);
+ filter:brightness(1.07);
+}
+.timer .controls .action-circle:not(:disabled):active{
+ transform:translateY(1px);
+ box-shadow:inset 0 2px 4px #0003;
+}
+.timer .controls .action-circle:disabled{
+ opacity:.45;
+ filter:saturate(.5);
+}
+.timer .controls .action-circle svg{width:30px;height:30px}
+.timer .control-labels{
+ display:grid;
+ grid-template-columns:1fr 1.2fr 1fr;
+ gap:clamp(8px,2vw,16px);
+ width:100%;
+ max-width:570px;
+ margin:9px auto 0;
+ text-align:center;
+}
+@media(max-width:649px){
+ .timer .controls,.timer .control-labels{gap:7px}
+ .timer .controls .action-circle,.timer .controls .action-start{height:60px;border-radius:12px}
+ .timer .control-labels{font-size:clamp(8px,2.5vw,11px)}
+}
