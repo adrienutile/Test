@@ -247,3 +247,26 @@ main>.paper:last-child:not(.selector):not(.timer):not(.history){max-width:790px}
 .controls .action-start.is-running svg{width:38%;height:38%}
 .controls .action-start:focus-visible{outline:4px solid #fff5ad;outline-offset:5px}
 .timer .eyebrow{letter-spacing:.09em}
+
+/* V3.7 — bandeau de fin de run sur toute la largeur du panneau */
+.timer .finished{
+ box-sizing:border-box;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ width:100%;
+ max-width:none;
+ align-self:stretch;
+ margin:20px 0 0;
+ padding:22px clamp(12px,4vw,34px);
+ border:2px solid #b78137;
+ border-radius:12px;
+ background:linear-gradient(160deg,#fff1cc 0%,#f2d39a 55%,#dca95c 100%);
+ box-shadow:inset 0 2px 0 #fff8,0 4px 12px #52300f44;
+ text-align:center;
+}
+.timer .finished strong{display:block;font-size:clamp(30px,5vw,54px);line-height:1.2;font-variant-numeric:tabular-nums;color:#56300f}
+.timer .finished p{margin:9px 0 15px;font-size:clamp(15px,2vw,21px);font-weight:800}
+.timer .finished .wood-btn{width:100%;max-width:480px;min-height:54px;justify-content:center}
+@media(max-width:649px){.timer .finished{padding:17px 12px;margin-top:16px}.timer .finished .wood-btn{max-width:none}}
