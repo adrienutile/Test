@@ -197,3 +197,9 @@ main{align-content:start}
  .bottom-nav button{min-height:59px}
  .app{padding-bottom:104px}
 }
+
+/* V3.4 : finitions responsive */
+@media(min-width:650px) and (max-width:949px){.timer{min-height:0!important}.hero{height:165px}.bottom-nav{margin-top:16px}}
+@media(max-width:649px){.hero{height:135px}.selector{padding:12px}.run small{max-width:110px;overflow-wrap:anywhere}}
+.controls .action-circle:not(:disabled):hover{transform:translateY(-3px);filter:brightness(1.12)}
+.stat{transition:transform .2s ease}.stat:hover{transform:translateY(-2px)}
