@@ -203,3 +203,34 @@ main{align-content:start}
 @media(max-width:649px){.hero{height:135px}.selector{padding:12px}.run small{max-width:110px;overflow-wrap:anywhere}}
 .controls .action-circle:not(:disabled):hover{transform:translateY(-3px);filter:brightness(1.12)}
 .stat{transition:transform .2s ease}.stat:hover{transform:translateY(-2px)}
+
+/* V3.5 — contenu centré et remonté sur tous les écrans */
+.app{max-width:1050px;margin-inline:auto;display:flex;flex-direction:column;align-items:center;padding-top:0}
+.hero{width:100%;justify-content:center;height:145px;margin:0 auto 10px}
+.hero img{object-position:center;max-width:min(390px,78%);margin:auto}
+.hero .gear{right:12px}
+.app>main{width:100%;max-width:930px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px}
+main>.paper,main>.page-title{width:100%;margin:0}
+main>.selector{max-width:790px}
+main>.timer{max-width:690px;min-height:0!important;position:static}
+main>.history{max-width:790px}
+main>.paper:last-child:not(.selector):not(.timer):not(.history){max-width:790px}
+.timer{text-align:center;align-items:center;padding:17px 20px}
+.timer .clock{font-size:clamp(55px,9vw,88px);padding:12px 0}
+.timer .controls{max-width:530px;margin:8px auto 0}
+.timer .control-labels{width:100%;max-width:530px;margin:12px auto 0}
+.bottom-nav{width:min(100%,790px);max-width:790px;margin:15px auto 0;position:relative;left:auto;bottom:auto;transform:none}
+@media(min-width:650px){
+ .hero{height:160px}
+ .app>main{display:flex!important;grid-template-columns:none!important;gap:13px}
+ main>.selector,main>.timer,main>.history,main>.paper:last-child:not(.selector):not(.timer):not(.history){grid-column:auto!important;grid-row:auto!important;position:static!important;align-self:center!important}
+ .bottom-nav{position:relative!important;transform:none!important}
+}
+@media(max-width:649px){
+ .hero{height:120px}
+ .app>main{gap:12px}
+ .timer{padding:14px 9px}
+ .timer .clock{font-size:clamp(43px,12vw,65px)}
+ .bottom-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);margin:0;width:min(100%,560px)}
+ .app{padding-bottom:100px}
+}
