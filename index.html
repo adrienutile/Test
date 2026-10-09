@@ -3,33 +3,46 @@
 <style>
 *{box-sizing:border-box}body{margin:0;background:#211c17;color:#f4e1b8;font-family:system-ui,sans-serif}header{background:linear-gradient(#6d4e2b,#392919);border-bottom:3px solid #a88a4e;text-align:center;padding:20px 8px;color:#ffdd89;font-weight:900;font-size:23px}header small{display:block;font-size:11px;letter-spacing:3px;color:#e8c891}main{padding:14px;display:grid;gap:14px;max-width:680px;margin:auto}.panel{background:#3a3025;border:1px solid #6b5536;border-radius:12px;padding:14px}.gold{color:#f6d37d}.green{color:#b8e49a}.red{color:#ffab9b}.muted{color:#bfb092;font-size:12px}.row{display:flex;align-items:center;gap:9px}.between{justify-content:space-between}.stack{display:grid;gap:10px}button{background:#574329;border:1px solid #80653c;border-radius:10px;padding:12px;color:#fff0c7;font-weight:700;touch-action:manipulation}button:disabled{opacity:.35}select,input{background:#30271e;color:#fff0c7;border:1px solid #80653c;border-radius:8px;padding:12px;width:100%;font-size:16px}.big{height:220px;width:100%;font-size:clamp(14px,4vw,22px);border-width:2px}.start{background:linear-gradient(#73a74c,#426a27);border-color:#a7d57b}.stop{background:linear-gradient(#bd4a3d,#812e28);border-color:#e78977}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}.clock{text-align:center;font-size:clamp(38px,11vw,56px);font-weight:850;font-variant-numeric:tabular-nums;padding:18px 0}.hidden{display:none!important}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stat{background:#30271e;border:1px solid #6b5536;border-radius:9px;padding:10px 5px;text-align:center}.stat b{display:block;font-size:18px;color:#f6d37d;margin-top:4px}.run{border-bottom:1px solid #655039;padding:12px 0}.run:last-child{border:0}.runTop{display:flex;justify-content:space-between;align-items:center;gap:8px}.runActions{display:flex;gap:6px}.delta{font-size:12px;margin-left:7px}.badge{display:inline-block;padding:3px 7px;border-radius:999px;background:#574329;font-size:11px;margin-left:5px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px}.card{background:#30271e;border:1px solid #6b5536;border-radius:10px;padding:12px;cursor:pointer}.card.active{outline:2px solid #f6d37d}.card strong{display:block;margin-bottom:5px}.chartWrap{overflow-x:auto}.chart{width:100%;height:210px;background:#30271e;border:1px solid #6b5536;border-radius:9px}.chart text{fill:#bfb092;font-size:10px}.chart polyline{fill:none;stroke:#f6d37d;stroke-width:3}.chart circle{fill:#f6d37d}.chart line{stroke:#655039;stroke-width:1}.newRecord{padding:15px;border:2px solid #f6d37d;border-radius:10px;text-align:center;background:#594720;animation:pop .5s ease}@keyframes pop{50%{transform:scale(1.03)}}.historyHead{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.historyHead select{width:auto}.activity{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.activity b{display:block;color:#f6d37d;font-size:22px}.tiny{font-size:11px}.danger{background:#66332b}
 </style><style>
-/* DA Parchemin — prototype Test */
-:root{color-scheme:light}
-body{background:radial-gradient(ellipse at 50% 0%,#8a693f 0,#4c3525 55%,#271b16 100%);color:#38240f;font-family:Georgia,'Times New Roman',serif}
-header{background:linear-gradient(110deg,#59351d,#95612d 45%,#59351d);border-bottom:5px ridge #d8ae60;color:#fff1bd;text-shadow:0 3px 2px #2b1709;letter-spacing:1px;box-shadow:0 5px 18px #241509}
-header small{color:#ffe2a1;font-family:system-ui,sans-serif}
-main{max-width:760px;gap:17px;padding:20px 13px 45px}
-.panel{position:relative;background:radial-gradient(ellipse at 20% 10%,#f9e9b8,#ead09a 65%,#d5ad6c);border:3px solid #805127;border-radius:15px;box-shadow:inset 0 0 0 2px #f6dfaa,inset 0 0 25px #ac7c3970,0 7px 0 #3d2616,0 10px 22px #1c110a8a;padding:17px}
-.gold{color:#77420e}.green{color:#296b2c}.red{color:#9b2424}.muted{color:#725634}
-.panel>strong.gold,.historyHead>strong.gold{font-size:19px;text-shadow:0 1px #fff2cb}
-button{background:linear-gradient(#98652d,#653917);border:2px solid #4b2911;border-radius:11px;color:#fff1c3;box-shadow:inset 0 2px #e5b46b,0 3px 0 #39200e;text-shadow:0 1px #291507;font-family:Georgia,serif;cursor:pointer}
-button:active{transform:translateY(2px);box-shadow:inset 0 2px #e5b46b}
-button:disabled{opacity:.48}
-select,input{background:#fff0c6;color:#452a13;border:2px solid #9b6d35;box-shadow:inset 0 2px 5px #7a512b3d;font-family:Georgia,serif}
-.start{background:linear-gradient(#85a642,#426521);border-color:#35521c;box-shadow:inset 0 2px #b6d46d,0 3px #243813}
-.stop,.danger{background:linear-gradient(#b85b43,#763022);border-color:#5a2119}
-.clock{font-size:clamp(43px,12vw,75px);color:#4e2b0e;text-shadow:0 2px #fff4c9;font-family:Georgia,serif;letter-spacing:2px}
-.big{height:145px;font-size:clamp(18px,5vw,27px)}
-.stat,.card{background:linear-gradient(#fff0c7,#dfbc7d);border:2px solid #a57b43;box-shadow:inset 0 1px #fff6dc;border-radius:9px;color:#482d14}
-.stat b{color:#70400e}.card.active{outline:3px solid #6d8d2f}.card strong{color:#5c3518}
-.chart{background:#fff0c6;border-color:#a57b43}.chart text{fill:#6b4c29}.chart polyline{stroke:#56752c}.chart circle{fill:#56752c}.chart line{stroke:#c1a06b}
-.run{border-bottom-color:#b99761}.badge{background:#cfa66d;color:#482d14}.newRecord{background:#f5d888;border-color:#9e752a}
-#status{font-weight:700;letter-spacing:1px;color:#78511e}
-#runs{background:#f8e6b6;border:1px solid #c49d63;border-radius:8px;padding:0 10px}
-#network-status{color:#46662c}
-@media(min-width:700px){main{padding-top:25px}.big{height:160px}}
+/* DA2 v2 — interface de jeu parchemin */
+:root{color-scheme:light}*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#35200e;font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 50% 0,#725235 0,#302217 62%,#17120e 100%);background-attachment:fixed}
+header{max-width:580px;margin:0 auto;background:radial-gradient(ellipse at 50% 0,#c7954c,#805022 65%,#482913);border:5px ridge #b78a4c;border-top:0;border-radius:0 0 26px 26px;padding:22px 12px 16px;text-align:center;color:#ffe49b;font-weight:1000;font-size:clamp(25px,7vw,38px);line-height:1.1;letter-spacing:1px;text-shadow:2px 3px #3b230e,-1px -1px #5d3718;box-shadow:0 9px 18px #140b06}
+header:before{content:'🌿  ✦  🥚  ✦  🌿';display:block;font-size:25px;margin-bottom:5px;letter-spacing:7px}
+header small{display:block;font:800 12px system-ui,sans-serif;color:#fff1bf;letter-spacing:4px;margin-top:9px}
+main{max-width:580px;margin:0 auto;display:flex;flex-direction:column;gap:12px;padding:14px 12px 90px}
+.panel{background:radial-gradient(ellipse at 45% 30%,#fff1c9 0%,#efd39a 68%,#cca064 100%);border:5px solid #70401c;outline:2px solid #ba8b48;outline-offset:-9px;border-radius:13px;padding:16px;box-shadow:inset 0 0 24px #a7763b66,0 6px 0 #372012,0 11px 18px #120c08a3}
+.panel strong.gold{color:#56300e;font-size:19px}.gold{color:#67370d}.muted{color:#765638}.green{color:#386d2e}.red{color:#9e352b}
+button{font-family:Georgia,serif;background:linear-gradient(#ab7536,#7c451e 55%,#5a2d14);color:#fff0bf;border:3px ridge #d5a256;border-radius:9px;padding:11px;font-weight:bold;text-shadow:0 2px #452411;box-shadow:inset 0 2px #eac17b,0 3px #3c2111;cursor:pointer}button:disabled{opacity:.45}button:active{transform:translateY(2px)}
+select,input{background:#f9e4b1;color:#3d240f;border:2px solid #946332;border-radius:9px;padding:13px;font:600 16px Georgia,serif;width:100%}
+#dungeon{font-size:19px;font-weight:800;box-shadow:inset 0 2px 6px #ba8d4b}
+.cards{display:none}
+main>section:nth-of-type(1){order:1;padding:13px 15px}
+main>section:nth-of-type(1)>strong{display:none}
+main>section:nth-of-type(1) .row.between{border-top:1px solid #bb945a;padding-top:8px}
+main>section:nth-of-type(2){order:2;text-align:center;background:radial-gradient(ellipse at 50% 20%,#f9e9ba,#e5bd79 85%,#bc8b4b);padding:17px 13px 21px}
+#status{font:800 12px system-ui,sans-serif;color:#86602c;letter-spacing:2px}
+.clock{font:900 clamp(47px,13vw,75px) Georgia,serif;letter-spacing:-2px;color:#3b240e;text-shadow:1px 2px #fff6da;padding:22px 0 25px;font-variant-numeric:tabular-nums}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.big{height:100px;font-size:24px;line-height:1.2}.big div{font-size:14px;margin-top:8px}
+.start{background:radial-gradient(circle at 50% 0,#b4d35a,#628a2e 55%,#35551e);border:4px ridge #d4c36e;box-shadow:inset 0 3px #e2ef92,0 5px #2a3e19;text-shadow:0 2px #2c4218}
+.stop{background:linear-gradient(#c36b4d,#8b392a);border-color:#c69568}
+#pause,#reset{font-size:14px}
+main>section:nth-of-type(6){order:3;padding:0;overflow:hidden}
+main>section:nth-of-type(6)>.historyHead:first-child{padding:14px 14px 10px;background:linear-gradient(#83511f,#58300e);border-bottom:3px solid #c49550}
+main>section:nth-of-type(6)>.historyHead:first-child strong{color:#ffde96;font-size:19px;text-shadow:0 2px #37200e}
+main>section:nth-of-type(6)>.historyHead:first-child .muted{color:#f8dfaa}
+main>section:nth-of-type(6)>.historyHead:nth-child(2){padding:10px 13px}
+#runs{margin:0 12px 10px;border:2px solid #c6a16a;border-radius:7px;background:#f6e3b5;padding:0 9px}
+.run{border-bottom:1px solid #caa974;padding:11px 0}
+#add{margin:0 12px 14px}
+main>section:nth-of-type(3){order:4}main>section:nth-of-type(4){order:5}main>section:nth-of-type(5){order:6}
+main>section:nth-of-type(7){order:7}main>.row{order:8}main>section:nth-of-type(8){order:9}main>section:nth-of-type(9){order:10}
+.stat,.card{background:linear-gradient(#f9e8bb,#e5c38c);border:2px solid #b68b53;color:#503013;border-radius:8px;padding:11px 5px}.stat b,.activity b{color:#6d421c}
+.chart{background:#f6e3b7;border-color:#b68b53}.chart text{fill:#765638}.chart polyline{stroke:#557d32}.chart circle{fill:#557d32}.chart line{stroke:#caa974}
+.badge{background:#ddbb7b;color:#543312}.newRecord{background:#f6d77b;border-color:#b27d28}
+@media(min-width:650px){main{padding-top:18px}.clock{font-size:78px}}
 </style></head><body>
-<header>⚔️ DOFUS RÉTRO<small>SPEEDRUN TRACKER · PWA</small></header><main>
+<header>DOFUS RÉTRO<small>⚔ SPEEDRUN ⚔</small></header><main>
 <section class="panel stack"><strong class="gold">🗺️ Mes donjons</strong><div id="cards" class="cards"></div><select id="dungeon"></select><div class="row between"><span class="muted">Record personnel</span><strong class="gold" id="best" style="font-size:23px">—</strong></div></section>
 <section class="panel"><div id="status" class="muted" style="text-align:center">PRÊT POUR LE RUN</div><div id="clock" class="clock gold">00:00.00</div><div class="buttons"><button id="start" class="big start">▶<div>DÉMARRER</div></button><button id="stop" class="big stop" disabled>■<div>TERMINER</div></button></div><div class="row" style="margin-top:15px"><button id="pause" style="flex:1" disabled>Ⅱ Pause</button><button id="reset" style="flex:1">↺ Réinitialiser</button></div><div id="finish" class="hidden stack" style="margin-top:16px;text-align:center"><div class="muted">Temps terminé</div><strong class="gold" id="result" style="font-size:30px"></strong><div id="record-msg"></div><button id="save" style="background:#82702e;padding:18px">💾 ENREGISTRER LE RUN</button></div></section>
 <section class="panel stack"><strong class="gold">📊 Statistiques</strong><div class="stats"><div class="stat"><span class="muted">PB</span><b id="stat-best">—</b></div><div class="stat"><span class="muted">Dernier</span><b id="stat-last">—</b></div><div class="stat"><span class="muted">Moyenne</span><b id="stat-avg">—</b></div><div class="stat"><span class="muted">Runs</span><b id="stat-count">0</b></div><div class="stat"><span class="muted">Progression</span><b id="stat-progress">—</b></div><div class="stat"><span class="muted">Meilleur gain</span><b id="stat-gain">—</b></div></div></section>
