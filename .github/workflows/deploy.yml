@@ -9,7 +9,7 @@ permissions:
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,14 +32,14 @@ jobs:
         run: |
           mkdir -p public/assets
           cp -R assets/. public/assets/
-          npm ci
+          npm install
           npm run build
       - name: Compiler l'aperçu dev
         working-directory: development
         run: |
           mkdir -p public/assets
           cp -R assets/. public/assets/
-          npm ci
+          npm install
           npx tsc -b
           npx vite build --base=/Test/preview/
       - name: Réunir les deux sites
