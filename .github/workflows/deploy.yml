@@ -1,7 +1,7 @@
-name: Déployer la PWA React
+name: Déployer site stable et aperçu dev
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,20 +14,42 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Récupérer la version stable
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: stable
+      - name: Récupérer la version de développement
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          path: development
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Préparer les illustrations
+      - name: Compiler le site stable
+        working-directory: stable
         run: |
           mkdir -p public/assets
           cp -R assets/. public/assets/
-      - run: npm install
-      - run: npm run build
+          npm ci
+          npm run build
+      - name: Compiler l'aperçu dev
+        working-directory: development
+        run: |
+          mkdir -p public/assets
+          cp -R assets/. public/assets/
+          npm ci
+          npx tsc -b
+          npx vite build --base=/Test/preview/
+      - name: Réunir les deux sites
+        run: |
+          mkdir -p stable/dist/preview
+          cp -R development/dist/. stable/dist/preview/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: stable/dist
   deploy:
     environment:
       name: github-pages
