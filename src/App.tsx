@@ -5,7 +5,7 @@ import {validDungeons,parseDuration,progressPoints,dungeonImage,recoverTimer} fr
 import type {Run,Dungeon,Phase} from './run-utils';
 type Page='timer'|'dungeons'|'stats'|'favorites'|'settings';
 const KEY='dofus-runs-test-v3',TIMER_KEY='dofus-test-active-timer-v1';
-const fallback=():Dungeon[]=>['Crocabulia','Chêne Mou','Minotot','Qu’Tan','Ilyzaelle','Kralamoure Géant'].map((name,i)=>({id:i+1,name,runs:[]}));
+const fallback=():Dungeon[]=>['Crocabulia','Chêne Mou','Minotot','Qu’Tan','Ilyzaelle','Kralamoure Géant','Grobe'].map((name,i)=>({id:i+1,name,runs:[]}));
 const ensureDungeons=(items:Dungeon[]):Dungeon[]=>{const kept=items.filter(x=>!/^p[eé]ki(?:\s+garou)?$/i.test(x.name.trim()));const names=fallback();return [...kept,...names.filter(x=>!kept.some(y=>y.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()===x.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase())).map(x=>({...x,id:Math.max(0,...kept.map(y=>y.id),...names.map(y=>y.id))+x.id}))]};
 const load=():Dungeon[]=>{try{const d=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem('dofus-runs-prod-v2')||'null');return validDungeons(d)?ensureDungeons(d):fallback()}catch{return fallback()}};
 const fmt=(ms:number|null|undefined)=>ms==null?'—':String(Math.floor(ms/60000)).padStart(2,'0')+':'+String(Math.floor(ms/1000)%60).padStart(2,'0')+'.'+String(Math.floor(ms/10)%100).padStart(2,'0');
