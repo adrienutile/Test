@@ -1,22 +1,62 @@
-name: Tests dev (sans publication)
+name: Tests dev et publication aperçu
 on:
   push:
     branches: [dev]
   workflow_dispatch:
 permissions:
   contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Récupérer la version stable sans la modifier
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: stable
+      - name: Récupérer la branche dev
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          path: development
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Préparer les illustrations
+      - name: Compiler le site stable
+        working-directory: stable
         run: |
           mkdir -p public/assets
           cp -R assets/. public/assets/
-      - run: npm install
-      - run: npm run build
-      - run: npm test
+          npm install
+          npm run build
+      - name: Tester et compiler dev
+        working-directory: development
+        run: |
+          mkdir -p public/assets
+          cp -R assets/. public/assets/
+          npm install
+          npm run build
+          npm test
+          npx vite build --base=/Test/preview/
+      - name: Ajouter l'aperçu sans changer le contenu stable
+        run: |
+          mkdir -p stable/dist/preview
+          cp -R development/dist/. stable/dist/preview/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: stable/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
