@@ -1,4 +1,4 @@
-name: Valider dev
+name: Tests dev (sans publication)
 on:
   push:
     branches: [dev]
@@ -19,3 +19,4 @@ jobs:
           cp -R assets/. public/assets/
       - run: npm install
       - run: npm run build
+      - run: npm test
