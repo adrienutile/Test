@@ -24,7 +24,7 @@ export function parseDuration(s:string):number|null{
 export function progressPoints(runs:Run[]):string{
  if(runs.length<2)return '';
  const t=runs.map(r=>r.ms),min=Math.min(...t),max=Math.max(...t),range=Math.max(1,max-min);
- return runs.map((r,i)=>String(25+i*550/(runs.length-1))+','+String(25+(max-r.ms)/range*160)).join(' ');
+ return runs.map((r,i)=>String(25+i*550/(runs.length-1))+','+String(25+(r.ms-min)/range*160)).join(' ');
 }
 export function dungeonImage(name:string):string{
  const n=name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
